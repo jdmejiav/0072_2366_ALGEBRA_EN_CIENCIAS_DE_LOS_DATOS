@@ -10,7 +10,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.image import array_to_img
 import matplotlib.pyplot as plt
 
-'''
+
 # Tamaño de la imagen
 width = 400
 height = 600
@@ -28,8 +28,6 @@ for x in range(width):
 
 # Guarda la imagen generada
 imagen.save("imagen_aleatoria.png")
-
-'''
 
 
 # Carga una imagen
@@ -52,13 +50,28 @@ n = int(input("Ingresa n deseado> "))
 
 sucesion = [img_aleatoria_array]
 for i in range(n):
-    termino_actual = img_objetivo_array - (img_objetivo_array - sucesion[-1]) / 1.01 if sucesion else np.zeros_like(img_objetivo_array)
+    termino_actual = img_objetivo_array - (img_objetivo_array - sucesion[-1]) / 1.1 if sucesion else np.zeros_like(img_objetivo_array)
     sucesion.append(termino_actual)
 
 imagen_reconstruida = array_to_img(sucesion[-1])
 plt.imshow(imagen_reconstruida)
 plt.show()
 
+distancia_minima = 0.5
+
+# Muestra los primeros 10 términos de la sucesión
+for i in range(10):
+    imagen_reconstruida = Image.fromarray(np.uint8(sucesion[i]))
+    plt.imshow(imagen_reconstruida, cmap='gray')
+    plt.title(f'Término {i + 1}')
+    plt.show()
+
+# Encuentra el valor de n para que la distancia sea menor a 0.5
+for i, imagen in enumerate(sucesion):
+    distancia = np.linalg.norm(img_objetivo_array - imagen)
+    if distancia < distancia_minima:
+        print("Valor para que n sea menor que 0.5 ", i)
+        break
 
 
 while True:

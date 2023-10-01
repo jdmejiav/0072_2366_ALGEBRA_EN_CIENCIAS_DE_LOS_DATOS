@@ -1,7 +1,0 @@
-
-imutils
-joblib
-numpy
-opencv-contrib-python
-scikit-learn
-scipy
