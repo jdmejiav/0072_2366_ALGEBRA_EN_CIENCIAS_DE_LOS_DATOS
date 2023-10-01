@@ -3,5 +3,7 @@
 Taller realizado por 
 
 - Catalina Castaño: ccastanof@eafit.edu.co
+  
 - Luis Ángel Jaimes: lajaimesm@eafit.edu.co
+  
 - Juan Diego Mejía: jdmejiav@eafit.edu.co
